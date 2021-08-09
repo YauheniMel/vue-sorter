@@ -6,12 +6,9 @@
         <div class="col-3 header__item"><h1 class="m-3">0</h1></div>
         <div class="col-2 header__item">
           <button class="header__btn btn btn-warning"
+                  v-on:click="showModal"
                   >Start sorting!
           </button>
-          <!-- <modal v-show="showModal"
-                 v-on:hide="hideModal"
-                 v-on:list="setList"
-                 /> -->
         </div>
       </div>
     </div>
@@ -21,9 +18,19 @@
 <script>
 export default {
   name: 'Header',
+  prop: {
+    isModal: Boolean,
+  },
   data() {
     return {
 
+    }
+  },
+  methods: {
+    showModal() {
+      this.$emit('showModal', {
+        isModal: true,
+      })
     }
   }
 }

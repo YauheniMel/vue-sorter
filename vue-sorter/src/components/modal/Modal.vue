@@ -1,9 +1,16 @@
 <template>
-  <div class="modal-back">
-    <div class="modal-island">
+  <div class="modal-back"
+       v-if="isModal"
+       v-on:click="hideModal"
+       >
+    <div class="modal-island"
+         v-on:click.stop
+         >
       <div class="modal-island__header">
         <h4>How many people?</h4>
-        <button class="modal-island__btn-close btn-close"></button>
+        <button class="modal-island__btn-close btn-close"
+                v-on:click="hideModal"
+                ></button>
       </div>
       <div class="modal-island__main">
         <form action="" class="modal-island__form"
@@ -26,11 +33,21 @@
 <script>
 export default {
   name: 'Modal',
+  props: {
+    isModal: Boolean
+  },
   data() {
     return {
 
     }
-  }
+  },
+  methods: {
+    hideModal() {
+      this.$emit('hideModal', {
+          isModal: false
+      })
+    }
+  },
 }
 </script>
 

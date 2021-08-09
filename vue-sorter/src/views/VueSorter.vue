@@ -1,8 +1,12 @@
 <template>
   <div class="vue-sorter">
-    <Modal />
+    <Modal v-bind:isModal="isModal"
+           v-on:hideModal="hideModal"
+           />
     <img class="vue-logo" alt="Vue logo" src="../assets/logo.png">
-    <Header />
+    <Header v-bind:isModal="isModal"
+            v-on:showModal="showModal"
+            />
     <Main />
   </div>
 </template>
@@ -14,10 +18,23 @@ import Modal from '@/components/modal/Modal.vue'
 
 export default {
   name: 'VueSorter',
+  data() {
+    return {
+      isModal: false,
+    };
+  },
   components: {
     Header,
     Main,
     Modal
+  },
+  methods: {
+    hideModal(data) {
+      this.isModal = data.isModal;
+    },
+    showModal(data) {
+      this.isModal = data.isModal;
+    }
   }
 }
 
