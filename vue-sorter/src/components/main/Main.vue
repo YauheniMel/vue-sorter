@@ -10,20 +10,25 @@
         </p>
       </div>
       <div class="main__list-wrap">
-        <!-- <list> -->
+        <List />
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import List from './List.vue'
+
 export default {
   name: 'Main',
   data() {
     return {
       list: 20,
     }
-  }
+  },
+  components: {
+    List,
+  },
 }
 </script>
 
