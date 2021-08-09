@@ -1,6 +1,6 @@
 <template>
   <div class="vue-sorter">
-    <img alt="Vue logo" src="../assets/logo.png">
+    <img class="vue-logo" alt="Vue logo" src="../assets/logo.png">
   </div>
 </template>
 
@@ -13,3 +13,15 @@ export default {
 }
 
 </script>
+
+<style lang="scss">
+  .vue-sorter {
+    .vue-logo {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+
+      width: 100px;
+    }
+  }
+</style>
