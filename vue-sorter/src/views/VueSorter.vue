@@ -7,7 +7,6 @@
 </template>
 
 <script>
-
 import Header from '@/components/header/Header.vue'
 import Main from '@/components/main/Main.vue'
 

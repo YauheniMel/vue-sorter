@@ -2,28 +2,28 @@
   <div class="container">
     <div class="main">
       <div class="main__header">
-        <p v-if="list"
-           >{{ list }} people in the list
+        <p v-if="listVal"
+           >{{ listVal }} people in the list
         </p>
         <p v-else
            >Push 'Start sorting!'
         </p>
       </div>
       <div class="main__list-wrap">
-        <List />
+        <list />
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import List from './List.vue'
+import List from '@/components/main/List.vue'
 
 export default {
   name: 'Main',
   data() {
     return {
-      list: 20,
+      listVal: 20,
     }
   },
   components: {
