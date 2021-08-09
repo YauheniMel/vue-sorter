@@ -9,10 +9,14 @@ export default new Vuex.Store({
   state: {
     people: '',
     time: '',
+    intervalId: '',
   },
   mutations: {
     getPeople(state, data) {
       state.people = data;
+    },
+    setTime(state, second) {
+      state.time = second;
     }
   },
   actions: {
@@ -26,9 +30,21 @@ export default new Vuex.Store({
         console.error(err);
       });
     },
-    startTimer() {
+    deletePeople({ commit }) {
+      commit('getPeople', '');
+    },
+    timer({ commit, state }, command) {
+      let second = 0;
+      if(command === 'start') {
+        state.intervalId = setInterval(() => {
+          commit('setTime', second++);
+        }, 1000);
+      } else if(command === 'stop') {
+        commit('setTime', '');
 
-    }
+        clearInterval(state.intervalId);
+      }
+    },
   },
   getters: {
     preparePeople: (state) => (number) => {
@@ -46,6 +62,6 @@ export default new Vuex.Store({
 
         state.people = peopleSeletion;
       }
-    }
+    },
   },
 })

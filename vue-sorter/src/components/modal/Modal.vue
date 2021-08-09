@@ -1,7 +1,7 @@
 <template>
   <div class="modal-back"
        v-if="isModal"
-       v-on:click="hideModal"
+       v-on:click="deletePeople"
        >
     <div class="modal-island"
          v-on:click.stop
@@ -9,7 +9,7 @@
       <div class="modal-island__header">
         <h4>How many people?</h4>
         <button class="modal-island__btn-close btn-close"
-                v-on:click="hideModal"
+                v-on:click="deletePeople"
                 ></button>
       </div>
       <div class="modal-island__main">
@@ -25,7 +25,7 @@
           <div class="modal-island__btn-section">
             <button class="modal-island__btn-reset btn btn-light" type="reset">Reset</button>
             <button class="modal-island__btn-confirm btn btn-warning" type="submit"
-                    v-on:click="getPeople"
+                    v-on:click.once="getPeople"
                     >Start</button>
           </div>
         </form>
@@ -42,7 +42,7 @@ export default {
   },
   data() {
     return {
-      peopleNumber: 0,
+      peopleNumber: '',
     }
   },
   methods: {
@@ -52,13 +52,22 @@ export default {
       })
     },
     async getPeople() {
-      await this.$store.dispatch('fetchPeople');
-
-      this.$store.getters.preparePeople(this.peopleNumber);
-
       if(this.peopleNumber >= 20 && this.peopleNumber <= 100) {
+        await this.$store.dispatch('fetchPeople');
+
+        this.$store.getters.preparePeople(this.peopleNumber);
+
         this.hideModal();
+        this.startTimer();
       }
+    },
+    deletePeople() {
+      this.hideModal();
+
+      this.$store.dispatch('deletePeople');
+    },
+    startTimer() {
+      this.$store.dispatch('timer','start');
     }
   },
 }

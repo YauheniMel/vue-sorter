@@ -9,8 +9,8 @@
 </template>
 
 <script>
-import ListTitle from './list/ListTitle.vue'
-import ListBody from './list/ListBody.vue'
+import ListTitle from './list-elem/ListTitle.vue'
+import ListBody from './list-elem/ListBody.vue'
 
 export default {
   name: 'List',
