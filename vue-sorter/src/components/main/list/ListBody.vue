@@ -1,8 +1,8 @@
 <template>
   <div class="list-body row">
-    <div class="list-body__email col">207melnik@gmail.com</div>
-    <div class="list-body__potatoes col">3</div>
-    <div class="list-body__name col">Yauheni Melnik</div>
+    <div class="list-body__email col">{{ person.email }}</div>
+    <div class="list-body__potatoes col">{{ person.id }}</div>
+    <div class="list-body__name col">{{ getNamePerson(person.email) }}</div>
   </div>
 </template>
 
@@ -12,6 +12,18 @@ export default {
   data() {
     return {
 
+    }
+  },
+  props: {
+    person: Object,
+  },
+  methods: {
+    getNamePerson(text) {
+      let regExp = /\b^[A-Za-z_.]+\b/gim;
+
+      const content = text.match(regExp)[0];
+
+      return content.replace('.', ' ').replace('_', ' ');
     }
   }
 }

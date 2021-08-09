@@ -1,1 +1,1 @@
-export const USERS = () => 'comments';
+export const PEOPLE = () => 'comments';

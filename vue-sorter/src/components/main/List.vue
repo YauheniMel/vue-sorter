@@ -1,9 +1,10 @@
 <template>
   <div class="list">
-    <list-title />
-    <list-body />
-    <list-body />
-    <list-body />
+    <list-title v-if="people"/>
+    <list-body v-for="person in people"
+               v-bind:key="person.id"
+               v-bind:person="person"
+               />
   </div>
 </template>
 
@@ -22,6 +23,11 @@ export default {
     ListTitle,
     ListBody,
   },
+  computed: {
+    people() {
+      return this.$store.state.people;
+    }
+  }
 }
 </script>
 

@@ -2,8 +2,8 @@
   <div class="container">
     <div class="main">
       <div class="main__header">
-        <p v-if="listVal"
-           >{{ listVal }} people in the list
+        <p v-if="peopleNumber"
+           >{{ peopleNumber }} people in the list
         </p>
         <p v-else
            >Push 'Start sorting!'
@@ -23,12 +23,16 @@ export default {
   name: 'Main',
   data() {
     return {
-      listVal: 20,
     }
   },
   components: {
     List,
   },
+  computed: {
+    peopleNumber() {
+      return this.$store.state.people.length;
+    }
+  }
 }
 </script>
 

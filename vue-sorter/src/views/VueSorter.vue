@@ -3,7 +3,6 @@
     <Modal v-bind:isModal="isModal"
            v-on:hideModal="hideModal"
            />
-    <img class="vue-logo" alt="Vue logo" src="../assets/logo.png">
     <Header v-bind:isModal="isModal"
             v-on:showModal="showModal"
             />
@@ -45,13 +44,5 @@ export default {
     background: lightgray;
 
     padding: 20px 0;
-
-    .vue-logo {
-      position: absolute;
-      top: 10px;
-      left: 10px;
-
-      width: 100px;
-    }
   }
 </style>
