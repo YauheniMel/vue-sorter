@@ -9,7 +9,7 @@ export default new Vuex.Store({
   state: {
     people: '',
     time: '',
-    intervalId: '',
+    intervalId: ''
   },
   mutations: {
     getPeople(state, data) {

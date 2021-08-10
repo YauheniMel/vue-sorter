@@ -1,14 +1,15 @@
 <template>
-  <div class="list-title row">
-    <div class="list-title__mail col">Email</div>
-    <div class="list-title__potatoes col">Potatoes</div>
-    <div class="list-title__name col">Full name</div>
+  <div class="list-rating row">
+    <div class="list-rating__email col">person</div>
+    <div class="list-rating__potatoes col">person.id</div>
+    <div class="list-rating__name col">on(person.email</div>
   </div>
 </template>
 
+
 <script>
 export default {
-  name: 'ListTitle',
+  name: 'ListRating',
   data() {
     return {
 
@@ -18,15 +19,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  .list-title {
-    border-bottom: 2px solid lightgray;
-
+  .list-rating {
     margin: 0;
 
     & > div {
       padding: 5px 15px;
-
-      font-size: 18px;
     }
 
     &__email {

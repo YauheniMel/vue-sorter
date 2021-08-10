@@ -68,6 +68,8 @@ export default {
     },
     startTimer() {
       this.$store.dispatch('timer','start');
+
+      this.peopleNumber = '';
     }
   },
 }
