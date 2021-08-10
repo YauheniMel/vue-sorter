@@ -1,13 +1,13 @@
 <template>
   <div class="vue-sorter">
-    <Modal v-bind:isModal="isModal"
-           v-on:hideModal="hideModal"
-           />
-    <modal-result />
     <Header v-bind:isModal="isModal"
             v-on:showModal="showModal"
             />
     <Main />
+    <Modal v-bind:isModal="isModal"
+           v-on:hideModal="hideModal"
+           />
+    <modal-result />
   </div>
 </template>
 

@@ -88,8 +88,6 @@ export default {
 
         const data = this.people.filter(item => item.id == this.ratingPotatoesList[this.clickCounter]);
 
-        console.log(this.rating);
-
         this.targetPerson = data[0];
 
         this.$store.dispatch('buildRatingPeopleList', this.targetPerson);

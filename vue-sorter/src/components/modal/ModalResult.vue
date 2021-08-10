@@ -13,7 +13,7 @@
                 ></button>
       </div>
       <div class="modal-result__main">
-        <h2>{{ getResult() }} second!</h2>
+        <h2>{{ getResult() }} seconds!</h2>
       </div>
     </div>
   </div>

@@ -61,9 +61,9 @@ export default {
     &:hover {
       cursor: pointer;
 
-      box-shadow: 0 1px 2px 1px rgb(77, 77, 77);
+      box-shadow: 1px 3px 3px 1px rgb(77, 77, 77);
 
-      font-size: 14px;
+      font-size: 20px;
     }
   }
 </style>
