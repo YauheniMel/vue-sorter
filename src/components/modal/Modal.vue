@@ -20,12 +20,12 @@
             Enter a number of how many people you want to add to the list
           </label>
           <input class="modal-island__input" id="peopleNumber" type="number" min="20" max="100"
-                 v-model.lazy="peopleNumber"
+                 v-model="peopleNumber"
                  >
           <div class="modal-island__btn-section">
             <button class="modal-island__btn-reset btn btn-light" type="reset">Reset</button>
             <button class="modal-island__btn-confirm btn btn-warning" type="submit"
-                    v-on:click.once="getPeople"
+                    v-on:click="getPeople"
                     >Start</button>
           </div>
         </form>
@@ -50,6 +50,8 @@ export default {
       this.$emit('hideModal', {
           isModal: false
       })
+
+      this.peopleNumber = '';
     },
     async getPeople() {
       if(this.peopleNumber >= 20 && this.peopleNumber <= 100) {
@@ -68,8 +70,6 @@ export default {
     },
     startTimer() {
       this.$store.dispatch('timer','start');
-
-      this.peopleNumber = '';
     }
   },
 }
@@ -99,8 +99,8 @@ export default {
     margin: auto;
     align-self: center;
 
-    width: 500px;
-    height: 250px;
+    width: 550px;
+    height: 245px;
 
     background: white;
 
@@ -122,14 +122,20 @@ export default {
     }
 
     label {
-      font-weight: 500;
+      display: block;
 
-      margin-top: 20px;
+      text-align: center;
+      font-weight: 700;
+
+      margin: 10px 0;
     }
 
     &__input {
       margin-top: 15px;
+      margin: auto;
       text-align: center;
+
+      display: block;
 
       width: 455px;
 

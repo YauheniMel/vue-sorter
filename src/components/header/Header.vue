@@ -3,7 +3,7 @@
     <div class="container">
       <div class="row header__nav justify-content-between">
         <div class="col-5 header__item"><h3 class="m-3"><img class="header__logo" alt="Vue logo" src="../../assets/logo.png">Sorting Training System!</h3></div>
-        <div class="col-3 header__item"><h1 class="m-3">{{ people }}</h1></div>
+        <div class="col-3 header__item"><h1 class="m-3">{{ timer }}</h1></div>
         <div class="col-2 header__item">
           <button class="header__btn btn btn-warning"
                   v-on:click="showModal"
@@ -39,7 +39,7 @@ export default {
     }
   },
   computed: {
-    people() {
+    timer() {
       return this.$store.state.time;
     }
   }
@@ -64,7 +64,7 @@ export default {
 
       font-weight: bold;
 
-      width: 140px;
+      width: 160px;
     }
   }
 </style>
