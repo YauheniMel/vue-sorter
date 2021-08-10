@@ -9,7 +9,9 @@ export default new Vuex.Store({
   state: {
     people: '',
     time: '',
-    intervalId: ''
+    intervalId: '',
+    ratingPeopleList: [],
+    isResult: 0,
   },
   mutations: {
     getPeople(state, data) {
@@ -17,6 +19,9 @@ export default new Vuex.Store({
     },
     setTime(state, second) {
       state.time = second;
+    },
+    setRating(state, person) {
+      state.ratingPeopleList.push(person);
     }
   },
   actions: {
@@ -33,6 +38,9 @@ export default new Vuex.Store({
     deletePeople({ commit }) {
       commit('getPeople', '');
     },
+    deleteRatingPeopleList({ state }) {
+      state.ratingPeopleList = [];
+    },
     timer({ commit, state }, command) {
       let second = 0;
       if(command === 'start') {
@@ -45,6 +53,17 @@ export default new Vuex.Store({
         clearInterval(state.intervalId);
       }
     },
+    buildRatingPeopleList({ commit }, person) {
+      person.newId = +new Date();
+
+      commit('setRating', person);
+    },
+    getResult({ state }) {
+      state.isResult = state.time;
+    },
+    clearResult({ state }) {
+      state.isResult = 0;
+    }
   },
   getters: {
     preparePeople: (state) => (number) => {

@@ -1,9 +1,13 @@
 <template>
   <div class="list"
-       v-if="isList"
+       v-if="time"
        >
     <list-title v-if="people"/>
-    <list-rating />
+    <list-rating v-show="rating"
+                 v-for="person in rating"
+                 v-bind:key="person.newId"
+                 v-bind:person="person"
+                 />
     <list-random v-for="person in people"
                  v-bind:key="person.id"
                  v-bind:person="person"
@@ -23,7 +27,6 @@ export default {
     return {
       clickCounter: 0,
       targetPerson: '',
-      isList: true,
     }
   },
   components: {
@@ -31,17 +34,15 @@ export default {
     ListRandom,
     ListRating
   },
-  updated() {
-    this.clickCounter = 0;
-
-    this.isList = true;
-  },
   computed: {
     people() {
       return this.$store.state.people;
     },
     time() {
       return this.$store.state.time;
+    },
+    rating() {
+      return this.$store.state.ratingPeopleList;
     }
   },
   methods: {
@@ -87,13 +88,19 @@ export default {
 
         const data = this.people.filter(item => item.id == this.ratingPotatoesList[this.clickCounter]);
 
-        this.targetPerson = data;
+        console.log(this.rating);
+
+        this.targetPerson = data[0];
+
+        this.$store.dispatch('buildRatingPeopleList', this.targetPerson);
 
         setTimeout(() => {
           if(this.clickCounter === this.ratingPotatoesList.length) {
-            alert(`Ваше время ${this.time} секунды`);
+            this.$store.dispatch('getResult');
 
-            this.isList = false;
+            this.$store.dispatch('buildRatingPeopleList', this.targetPerson);
+
+            this.clear();
           }
         }, 200);
 
@@ -105,6 +112,15 @@ export default {
       setInterval(() => {
         elem.classList.remove('error');
       }, 2000);
+    },
+    clear() {
+      this.$store.dispatch('deleteRatingPeopleList');
+
+      this.$store.dispatch('timer', 'stop');
+
+      this.clickCounter = 0;
+
+      this.$store.state.people = '';
     }
   }
 }
